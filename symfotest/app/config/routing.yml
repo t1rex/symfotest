@@ -2,7 +2,12 @@ app:
     resource: @AppBundle/Controller/
     type:     annotation
 
-# app/config/routing.yml
+
 acme_website:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
     prefix: /
+
+hello:
+    path:      /hello/{firstName}/{lastName}
+    # uses a special syntax to point to the controller - see note below
+    defaults:  { _controller: AppBundle:Hello:index }
