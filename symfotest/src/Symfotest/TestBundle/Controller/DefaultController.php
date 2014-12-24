@@ -2,8 +2,10 @@
 namespace Symfotest\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfotest\TestBundle\Entity\Comments;
+use Symfotest\TestBundle\Entity\Task;
 
 class DefaultController extends Controller
 {
@@ -30,14 +32,31 @@ class DefaultController extends Controller
 
         return new Response('Created comment id' . $comment->getId());
     }
-public function showAction($id)
+
+    public function showAction($id)
     {
         $comment = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->find($id);
 
         if (!$comment) {
             throw $this->createNotFoundException('No comments found for id' . $id);
         }
-        var_dump($comment);
         return $this->render('SymfotestTestBundle:Table:table_for_id.html.twig', array('comment' => $comment));
+    }
+
+    public function formAction(Request $request = null)
+    {
+        // создаём задачу и присваиваем ей некоторые начальные данные для примера
+        $task = new Task();
+        $task->setTask('Write a blog post');
+        $task->setDueDate(new \DateTime('tomorrow'));
+
+        $form = $this->createFormBuilder($task)
+            ->add('task', 'text')
+            ->add('dueDate', 'date')
+            ->getForm();
+
+        return $this->render('SymfotestTestBundle:Page:table.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }

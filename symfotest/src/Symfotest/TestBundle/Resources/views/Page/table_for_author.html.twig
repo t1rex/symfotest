@@ -1,23 +1,26 @@
-<table class="records_list">
-    <thead>
-    <tr>
-        <th>Author</th>
-        <th>Created</th>
-        <th>Website</th>
-        <th>Post</th>
-        <th>Rating</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for comment in comments %}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+        <thead>
         <tr>
-            <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
-            <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
-            <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
-            <td>{{ comment.comment }}</td>
-            <td>{{ comment.rating }}</td>
+            <th>Author</th>
+            <th>Created</th>
+            <th>Website</th>
+            <th>Post</th>
+            <th>Rating</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
+                <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
+                <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.rating }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
