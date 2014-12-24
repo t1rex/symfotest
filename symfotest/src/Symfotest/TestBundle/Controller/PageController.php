@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('SymfotestTestBundle:Page:index.html.twig');
+        return $this->render('SymfotestTestBundle:Page:base.html.twig');
     }
 
     public function showAllAction()

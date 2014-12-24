@@ -1,39 +1,26 @@
-symfotest_test:
-    resource: "@SymfotestTestBundle/Resources/config/routing.yml"
-    prefix:   /
+#symfotest_test:
+#    resource: "@SymfotestTestBundle/Resources/config/routing.yml"
+#    prefix:   /
 
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+#app:
+#    resource: @AppBundle/Controller/
+#    type:     annotation
 
+#acme_website:
+#    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+#    prefix: /
 
-acme_website:
-    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
-    prefix: /
+#_welcome:
+#    pattern:  /
+#    defaults: { _controller: AcmeDemoBundle:Welcome:index }
 
-_welcome:
-    pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+main:
+    path:      /main
+    defaults:  {_controller: SymfotestTestBundle:Page:index}
 
-blog:
-    path:      /blog/{page}
-    defaults:  { _controller: AppBundle:Blog:index, page: 1 }
-
-blog_show:
-    path:      /blog/{slug}
-    defaults:  { _controller: AppBundle:Blog:show }
-
-test:
-    path:      /test/{name}
-    defaults:  {_controller: SymfotestTestBundle:Default:index, name: Nazar}
-
-table:
-    path:      /table/{name}
-    defaults:  {_controller: SymfotestTestBundle:Default:table, name: Nazar}
-
-create:
-    path:      /create
-    defaults:  {_controller: SymfotestTestBundle:Default:create}
+show_all:
+    path:      /show-all
+    defaults:  {_controller: SymfotestTestBundle:Page:showAll}
 
 show_author:
     path:      /show-author{author}
@@ -43,10 +30,6 @@ show_site:
     path:      /show-site{site}
     defaults:  {_controller: SymfotestTestBundle:Page:showSite, site: site.com}
 
-all:
-    path:      /all
-    defaults:  {_controller: SymfotestTestBundle:Page:index}
-
-show_all:
-    path:      /show-all
-    defaults:  {_controller: SymfotestTestBundle:Page:showAll}
+create:
+    path:      /create
+    defaults:  {_controller: SymfotestTestBundle:Default:create}
