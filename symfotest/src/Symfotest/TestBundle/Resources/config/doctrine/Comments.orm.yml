@@ -1,0 +1,29 @@
+Symfotest\TestBundle\Entity\Comments:
+    type: entity
+    table: null
+    repositoryClass: Symfotest\TestBundle\Entity\CommentsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        author:
+            type: string
+            length: '255'
+        date:
+            type: date
+            length: null
+        site:
+            type: string
+            length: '255'
+        comment:
+            type: text
+            length: null
+        rating:
+            type: int
+            length: '2'
+        status:
+            type: smallint
+    lifecycleCallbacks: {  }
