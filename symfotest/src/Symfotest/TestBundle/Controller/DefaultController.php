@@ -22,9 +22,9 @@ class DefaultController extends Controller
         $currentData = new \DateTime("now");
 
         $comment = new Comments();
-        $comment->setAuthor('Nazar');
+        $comment->setAuthor('Chuck');
         $comment->setDate($currentData);
-        $comment->setSite('site.com');
+        $comment->setSite('site.com.ua');
         $comment->setComment('some text of the comment');
         $comment->setRating(5);
         $comment->setStatus(1);
@@ -43,6 +43,6 @@ public function showAction($id)
             throw $this->createNotFoundException('No comments found for id' . $id);
         }
         var_dump($comment);
-        return $this->render('SymfotestTestBundle:Table:table.html.twig', array('comment' => $comment));
+        return $this->render('SymfotestTestBundle:Table:table_for_id.html.twig', array('comment' => $comment));
     }
 }

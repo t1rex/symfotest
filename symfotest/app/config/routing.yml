@@ -35,6 +35,18 @@ create:
     path:      /create
     defaults:  {_controller: SymfotestTestBundle:Default:create}
 
-show:
-    path:      /show/{id}
-    defaults:  {_controller: SymfotestTestBundle:Default:show, id: 1}
+show_author:
+    path:      /show-author{author}
+    defaults:  {_controller: SymfotestTestBundle:Page:showAuthor, author: Nazar}
+
+show_site:
+    path:      /show-site{site}
+    defaults:  {_controller: SymfotestTestBundle:Page:showSite, site: site.com}
+
+all:
+    path:      /all
+    defaults:  {_controller: SymfotestTestBundle:Page:index}
+
+show_all:
+    path:      /show-all
+    defaults:  {_controller: SymfotestTestBundle:Page:showAll}
