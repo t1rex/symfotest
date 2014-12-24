@@ -1,3 +1,7 @@
+symfotest_test:
+    resource: "@SymfotestTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation
@@ -7,7 +11,14 @@ acme_website:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
     prefix: /
 
-hello:
-    path:      /hello/{firstName}/{lastName}
-    # uses a special syntax to point to the controller - see note below
-    defaults:  { _controller: AppBundle:Hello:index }
+_welcome:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
+blog:
+    path:      /blog/{page}
+    defaults:  { _controller: AppBundle:Blog:index, page: 1 }
+
+blog_show:
+    path:      /blog/{slug}
+    defaults:  { _controller: AppBundle:Blog:show }
