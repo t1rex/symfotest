@@ -35,7 +35,7 @@ class Comments
     private $comment;
 
     /**
-     * @var int
+     * @var integer
      */
     private $rating;
 
@@ -150,10 +150,10 @@ class Comments
     /**
      * Set rating
      *
-     * @param \int $rating
+     * @param \integer $rating
      * @return Comments
      */
-    public function setRating(\int $rating)
+    public function setRating($rating)
     {
         $this->rating = $rating;
 
@@ -163,7 +163,7 @@ class Comments
     /**
      * Get rating
      *
-     * @return \int 
+     * @return \integer
      */
     public function getRating()
     {

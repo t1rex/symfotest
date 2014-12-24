@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <td>Author</td>
+            <td>Date</td>
+            <td>Site</td>
+            <td>Comment</td>
+            <td>Rating</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.date|date('Y-m-d') }}</td>
+            <td>{{ comment.site }}</td>
+            <td>{{ comment.comment }}</td>
+            <td>{{ comment.rating }}</td>
+        </tr>
+    </tbody>
+</table>

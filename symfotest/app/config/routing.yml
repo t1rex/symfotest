@@ -25,4 +25,16 @@ blog_show:
 
 test:
     path:      /test/{name}
-    defaults:  {_controller: SymfotestTestBundle:Default:index}
+    defaults:  {_controller: SymfotestTestBundle:Default:index, name: Nazar}
+
+table:
+    path:      /table/{name}
+    defaults:  {_controller: SymfotestTestBundle:Default:table, name: Nazar}
+
+create:
+    path:      /create
+    defaults:  {_controller: SymfotestTestBundle:Default:create}
+
+show:
+    path:      /show/{id}
+    defaults:  {_controller: SymfotestTestBundle:Default:show, id: 1}

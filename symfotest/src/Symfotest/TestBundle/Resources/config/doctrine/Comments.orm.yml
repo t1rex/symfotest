@@ -22,7 +22,7 @@ Symfotest\TestBundle\Entity\Comments:
             type: text
             length: null
         rating:
-            type: int
+            type: integer
             length: '2'
         status:
             type: smallint
