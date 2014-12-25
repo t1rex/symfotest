@@ -33,7 +33,3 @@ show_site:
 create:
     path:      /create
     defaults:  {_controller: SymfotestTestBundle:Default:create}
-
-form_test:
-    path:      /form
-    defaults:  {_controller: SymfotestTestBundle:Default:form}

@@ -1,3 +1,7 @@
 symfotest_test_homepage:
     path:     /hello/{name}
     defaults: { _controller: SymfotestTestBundle:Default:index }
+
+comments_author:
+    path:     /{slud}
+    defaults: { _controller: SymfotestTestBundle:Default:index }

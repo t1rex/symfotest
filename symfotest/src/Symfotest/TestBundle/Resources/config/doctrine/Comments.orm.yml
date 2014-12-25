@@ -15,6 +15,9 @@ Symfotest\TestBundle\Entity\Comments:
         date:
             type: date
             length: null
+            gedmo:
+                timestampable:
+                    on: create
         site:
             type: string
             length: '255'
@@ -26,4 +29,10 @@ Symfotest\TestBundle\Entity\Comments:
             length: '2'
         status:
             type: smallint
+#        slug:
+#            type: string
+#                length: '255'
+#                gedmo:
+#                    slug:
+#                        fields: author
     lifecycleCallbacks: {  }

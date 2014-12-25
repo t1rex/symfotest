@@ -23,9 +23,25 @@
         {% endfor %}
         </tbody>
     </table>
-    {#======================================================================#}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+
+    <form action="{{ path('show_all') }}" method="post" {{ form_enctype(form) }}>
+        <div class="form-group">
+            <label>Author Name</label>
+            {{ form_widget(form.author) }}
+        </div>
+        <div class="form-group">
+            <label>Website</label>
+            {{ form_widget(form.site) }}
+        </div>
+        <div class="form-group">
+            <label>Comment</label>
+            {{ form_widget(form.comment) }}
+        </div>
+        <div class="form-group">
+            <label>Rating</label>
+            {{ form_widget(form.rating) }}
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
     {#========================================================================#}
 {% endblock %}

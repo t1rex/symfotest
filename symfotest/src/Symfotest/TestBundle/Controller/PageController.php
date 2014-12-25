@@ -15,32 +15,58 @@ class PageController extends Controller
 
     public function showAllAction(Request $request)
     {
-        $currentData = new \DateTime("now");
+//        $currentData = new \DateTime("now");
+        $model = new Comments();
 
         $newComment = new Comments();
-        $newComment->setAuthor('form');
-        $newComment->setDate($currentData);
-        $newComment->setSite('form');
-        $newComment->setComment('form');
-        $newComment->setRating(5);
-        $newComment->setStatus(1);
+        $newComment->setAuthor('testAuthor');
+        $newComment->setDate(new \DateTime("now"));
+        $newComment->setSite('https://getcomposer.org/download/');
+        $newComment->setComment('testComment');
+        $newComment->setRating(1);
+        $newComment->setStatus(5);
 
         $form = $this->createFormBuilder($newComment)
-            ->add('author', 'text')
-            ->add('site', 'text')
-            ->add('comment', 'text')
-            ->add('rating', 'text')
+            ->add('author', 'text', array(
+                'attr' => array('class' => 'form-control')
+            ))
+            ->add('site', 'url', array(
+                'attr' => array('class' => 'form-control')
+            ))
+            ->add('comment', 'textarea', array(
+                'attr' => array('class' => 'form-control')
+            ))
+            ->add('rating', 'choice', array(
+                'choices'   => array(
+                    1 => '1',
+                    2 => '2',
+                    3 => '3',
+                    4 => '4',
+                    5 => '5',
+                    6 => '6',
+                    7 => '7',
+                    8 => '8',
+                    9 => '9',
+                    10 => '10',
+                    ),
+                'required'  => false,
+                'attr' => array('class' => 'form')
+            ))
             ->add('save', 'submit', array('label' => 'Create comment'))
             ->getForm();
 
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            return $this->redirect($this->generateUrl('show_all'));
+        if ($request->isMethod('post')) {
+            $form->handleRequest($request);
+            $newComment->setDomainNameValue();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($newComment);
+                $em->flush();
         }
 
-        $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
 
+
+
+        $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
         if (!$comments) {
             throw $this->createNotFoundException('No comments found');
         }

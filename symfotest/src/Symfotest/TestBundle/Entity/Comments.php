@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Comments
+ *
  */
 class Comments
 {
@@ -21,6 +22,7 @@ class Comments
 
     /**
      * @var \DateTime
+     *
      */
     private $date;
 
@@ -192,4 +194,14 @@ class Comments
     {
         return $this->status;
     }
+    /**
+    *
+    */
+    public function setDomainNameValue()
+    {
+        if($this->getSite()) {
+            $this->site = parse_url($this->getSite(), PHP_URL_HOST);
+        }
+    }
+
 }
