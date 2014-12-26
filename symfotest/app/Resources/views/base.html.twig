@@ -3,12 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Training  project symfony2{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerjqueryui/css/smoothness/jquery-ui.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerjqueryui/css/smoothness/jquery.ui.theme.css') }}" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">#}
+        <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bmatznerjquery/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>
+        {#<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>#}
+        {#<script src="//code.jquery.com/jquery-1.10.2.js"></script>#}
+        {#<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>#}
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">

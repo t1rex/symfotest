@@ -1,2 +1,6 @@
-Hello {{ name }}!
-<a href=" {{ path('comments_author', {'slug': comments.slug}) }}">Author</a>
+{% extends 'SymfotestTestBundle::layout.html.twig' %}
+{% block body %}
+    Hello {{ name }}!
+{% endblock %}
+
+{#<a href=" {{ path('comments_author', {'slug': comments.slug}) }}">Author</a>#}

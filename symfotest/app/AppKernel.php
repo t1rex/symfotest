@@ -19,7 +19,9 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Acme\TestBundle\AcmeTestBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Symfotest\TestBundle\SymfotestTestBundle()
+            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+            new Symfotest\TestBundle\SymfotestTestBundle(),
+            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
