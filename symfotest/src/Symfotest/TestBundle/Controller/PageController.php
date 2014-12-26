@@ -14,6 +14,8 @@ class PageController extends Controller
         return $this->render('SymfotestTestBundle:Page:base.html.twig');
     }
 
+
+
     public function showAllAction(Request $request)
     {
 
@@ -59,11 +61,13 @@ class PageController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newComment);
                 $em->flush();
+                $newComment = null;
 
                 $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
                 if (!$comments) {
                     throw $this->createNotFoundException('No comments found');
                 }
+
                 $response = $this->renderView('SymfotestTestBundle:Page:table.html.twig', array('comments' => $comments));
 
                 return new JsonResponse($response);

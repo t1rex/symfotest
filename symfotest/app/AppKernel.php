@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Acme\TestBundle\AcmeTestBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Symfotest\TestBundle\SymfotestTestBundle(),
+            new Symfotest\TestBundle\SymfotestTestBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
