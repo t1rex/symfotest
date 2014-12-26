@@ -3,6 +3,7 @@ namespace Symfotest\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfotest\TestBundle\Entity\Comments;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,17 +16,13 @@ class PageController extends Controller
 
     public function showAllAction(Request $request)
     {
-//        $currentData = new \DateTime("now");
-        $model = new Comments();
 
         $newComment = new Comments();
-        $newComment->setAuthor('testAuthor');
         $newComment->setDate(new \DateTime("now"));
         $newComment->setSite('https://getcomposer.org/download/');
         $newComment->setComment('testComment');
         $newComment->setRating(1);
         $newComment->setStatus(5);
-
         $form = $this->createFormBuilder($newComment)
             ->add('author', 'text', array(
                 'attr' => array('class' => 'form-control')
@@ -50,21 +47,28 @@ class PageController extends Controller
                     10 => '10',
                     ),
                 'required'  => false,
-                'attr' => array('class' => 'form')
+                'attr' => array('class' => 'form-control col-lg-2')
             ))
             ->add('save', 'submit', array('label' => 'Create comment'))
             ->getForm();
 
         if ($request->isMethod('post')) {
             $form->handleRequest($request);
-            $newComment->setDomainNameValue();
+            $newComment->prepareURL();
+            if($form->isSubmitted()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newComment);
                 $em->flush();
+
+                $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
+                if (!$comments) {
+                    throw $this->createNotFoundException('No comments found');
+                }
+                $response = $this->renderView('SymfotestTestBundle:Page:table.html.twig', array('comments' => $comments));
+
+                return new JsonResponse($response);
+            }
         }
-
-
-
 
         $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
         if (!$comments) {

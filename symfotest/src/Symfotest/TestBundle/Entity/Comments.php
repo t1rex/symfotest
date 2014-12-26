@@ -197,7 +197,7 @@ class Comments
     /**
     *
     */
-    public function setDomainNameValue()
+    public function prepareURL()
     {
         if($this->getSite()) {
             $this->site = parse_url($this->getSite(), PHP_URL_HOST);
