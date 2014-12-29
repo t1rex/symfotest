@@ -1,32 +1,4 @@
 {% extends '::base.html.twig' %}
-    {#{% block javascripts  %}#}
-        {#{{ parent() }}#}
-        {#<script type="text/javascript">#}
-            {#$(document).ready(function(){#}
-                {#$('.comment-form input').removeAttr('value');#}
-
-                {#var $form = $('.comment-form'),#}
-                    {#action = $form.attr('action');#}
-                {#$form.submit(function(){#}
-                   {#var data = $form.serialize();#}
-                    {#$.ajax({#}
-                        {#type: "POST",#}
-                        {#url: action,#}
-                        {#dataType: 'json',#}
-                        {#data: data,#}
-                        {#success: function(response){#}
-                            {#$('.table-container').empty().append(response);#}
-                        {#},#}
-                        {#error: function(data) {#}
-                            {#alert('Error:' + data + ' is not valid');#}
-                        {#}#}
-                    {#});#}
-                    {#return false;#}
-                {#})#}
-
-            {#})#}
-        {#</script>#}
-    {#{% endblock %}#}
 {% block body %}
     {% javascripts '@SymfotestTestBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -78,6 +50,7 @@
 
         <div id="dialog" title="Basic dialog">
         </div>
+
 
     {% endif %}
     {#========================================================================#}

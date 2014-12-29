@@ -36,7 +36,8 @@
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.10.*",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "bmatzner/jquery-ui-bundle": "*"
+        "bmatzner/jquery-ui-bundle": "*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
 
 
     },

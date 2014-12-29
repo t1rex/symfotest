@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Symfotest\TestBundle\SymfotestTestBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle()
         );
 

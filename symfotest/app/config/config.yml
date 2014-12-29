@@ -82,3 +82,9 @@ stof_doctrine_extensions:
 braincrafted_bootstrap:
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
     less_filter: none
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Symfotest\TestBundle\Entity\User
+

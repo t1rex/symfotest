@@ -1,11 +1,12 @@
 $(document).ready(function(){
-    $( "#dialog").hide();
+    var timeLimit =60;
     $('.comment-form input').removeAttr('value');
     var status = '';
     var $form = $('.comment-form'),
         action = $form.attr('action'),
         data = null;
     $form.submit(function(){
+        $('.submit-form').attr('disabled', true);
         data = $form.serialize();
         $.ajax({
             type: "POST",
@@ -21,19 +22,35 @@ $(document).ready(function(){
                 status = 'Error: comment can\'t be added';
             },
             complete: function(){
+                $( "#dialog").html('<p>' + status + '</p>' + '<br/> You can add comment through 60 s.').dialog({
+                    dialogClass: "no-close",
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
+                showTime();
             }
         });
         return false;
     });
-    $( "#dialog").html(status).dialog({
-        dialogClass: "no-close",
-        buttons: [
-            {
-                text: "OK",
-                click: function() {
-                    $( this ).dialog( "close" );
-                }
+
+    function showTime() {
+        var i = 1;
+        var timerId = setInterval(function() {
+            $('.submit-form').html('Wait ' + i + ' s.');
+            if (i == timeLimit) {
+                clearInterval(timerId);
+                $('.submit-form').html('Submit').attr('disabled', false);
             }
-        ]
-    });
+            i++;
+        }, 1000);
+    }
+
+
+
 })
