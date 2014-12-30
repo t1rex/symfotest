@@ -5,13 +5,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfotest\TestBundle\Entity\Comments;
-use Symfotest\TestBundle\Entity\Task;
+use Symfotest\TestBundle\Entity\Post;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction($name = null)
     {
         return $this->render('SymfotestTestBundle:Default:index.html.twig', array('name' => $name));
+    }
+
+    public function createPostAction(){
+        $post = new Post();
+        $post->setAuthor('test author');
+        $post->setBody('test body');
+        $post->setTitle('test title');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+
+        return new Response('Created comment id' . $post->getId());
     }
 
     public function createAction()

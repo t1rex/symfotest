@@ -34,6 +34,10 @@ create:
     path:      /create
     defaults:  {_controller: SymfotestTestBundle:Default:create}
 
+create_post:
+    path:      /create-post
+    defaults:  {_controller: SymfotestTestBundle:Default:createPost}
+
 # ->2.1. STEP 1: DEFINE SONATAADMINBUNDLE ROUTES
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'

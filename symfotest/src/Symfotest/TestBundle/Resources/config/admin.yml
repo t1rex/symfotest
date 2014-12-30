@@ -6,7 +6,17 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
         arguments:
             - ~
-            - Acme\DemoBundle\Entity\Post
+            - Symfotest\TestBundle\Entity\Post
+            - ~
+        calls:
+            - [ setTranslationDomain, [SymfotestTestBundle]]
+    sonata.admin.comments:
+        class: Symfotest\TestBundle\Admin\CommentsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Comments" }
+        arguments:
+            - ~
+            - Symfotest\TestBundle\Entity\Comments
             - ~
         calls:
             - [ setTranslationDomain, [SymfotestTestBundle]]
