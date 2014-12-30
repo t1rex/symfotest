@@ -1,139 +1,26 @@
 <?php
 
 namespace Symfotest\TestBundle\Entity;
+use FOS\UserBundle\Model\User as BaseUser;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @var integer
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
-    private $status;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     * @return User
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string 
-     */
-    public function getStatus()
-    {
-        return $this->status;
+        parent::__construct();
+        // your own logic
     }
 }

@@ -12,7 +12,7 @@
         {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">#}
         <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
         {#<script type="text/javascript" src="{{ asset('bundles/bmatznerjquery/js/jquery.min.js') }}"></script>#}
-        <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>
+        {#<script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>#}
         {#<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>#}
         {#<script src="//code.jquery.com/jquery-1.10.2.js"></script>#}
         {#<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>#}
@@ -33,7 +33,13 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ path('main') }}">Home</a></li>
                         <li><a href="{{ path('show_all') }}">Table</a></li>
+                        <li><a href="{{ path('control_panel') }}">Admin panel</a></li>
+
                         {#<li><a href="#contact">Contact</a></li>#}
+                    </ul>
+                    <ul class="nav navbar-right navbar-nav">
+                        <li class="right"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li class="right"><a href="{{ path('fos_user_registration_register') }}">Registration</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

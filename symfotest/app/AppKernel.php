@@ -27,7 +27,8 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Symfotest\TestBundle\SymfotestTestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle()
+            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
+            new Symfotest\UserBundle\SymfotestUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

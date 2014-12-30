@@ -1,18 +1,22 @@
-#symfotest_test:
-#    resource: "@SymfotestTestBundle/Resources/config/routing.yml"
-#    prefix:   /
+symfotest_user:
+    resource: "@SymfotestUserBundle/Resources/config/routing.yml"
+    prefix:   /
 
-#app:
-#    resource: @AppBundle/Controller/
-#    type:     annotation
+symfotest_test:
+    resource: "@SymfotestTestBundle/Resources/config/routing.yml"
+    prefix:   /
 
-#acme_website:
-#    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
-#    prefix: /
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
 
-#_welcome:
-#    pattern:  /
-#    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+acme_website:
+    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+    prefix: /
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
 
 main:
     path:      /main
@@ -47,3 +51,26 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+
+control_panel:
+    path: /admin
+
+# app/config/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
