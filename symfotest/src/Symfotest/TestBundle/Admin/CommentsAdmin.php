@@ -7,18 +7,34 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class CommentsAdmin extends Admin
 {
+    /**
+     * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
+     *
+     * @return void
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('author')
+            ->add('site')
+            ->add('comment')
+            ->add('rating')
+        ;
+    }
+
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('author')
             ->add('site')
+            ->add('date')
             ->add('comment')
             ->add('rating')
-
         ;
     }
 
@@ -40,7 +56,6 @@ class CommentsAdmin extends Admin
             ->add('site')
             ->add('comment')
             ->add('rating')
-
         ;
     }
 
