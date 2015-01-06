@@ -27,6 +27,9 @@
             </tbody>
         </table>
     </div>
+    {%  if error is defined %}
+        <h3>test{{ error }}</h3>
+    {% endif %}
     {% if form is defined %}
         <form class="comment-form" action="{{ path('show_all') }}" method="post" {{ form_enctype(form) }}>
             <div class="form-group">

@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var timeLimit =60;
+    var $container = $('.table-container');
     $('.comment-form input').removeAttr('value');
     var status = '';
     var $form = $('.comment-form'),
@@ -14,8 +15,14 @@ $(document).ready(function(){
             dataType: 'json',
             data: data,
             success: function(response){
-                $('.table-container').empty().append(response);
-                status = 'Comment successfully added';
+                if (response["error"] != undefined ) {
+                    $container.append(response)
+                    status = response["error"];
+                } else{
+                    $container.empty().append(response);
+                    status = 'Comment successfully added';
+                }
+
             },
             error: function(data) {
                 alert('Error:' + data + ' is not valid');
