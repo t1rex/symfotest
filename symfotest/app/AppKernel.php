@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
             new Acme\TestBundle\AcmeTestBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
@@ -28,7 +27,6 @@ class AppKernel extends Kernel
             new Symfotest\TestBundle\SymfotestTestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
-            new Symfotest\UserBundle\SymfotestUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

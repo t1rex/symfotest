@@ -1,14 +1,6 @@
-symfotest_user:
-    resource: "@SymfotestUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 symfotest_test:
     resource: "@SymfotestTestBundle/Resources/config/routing.yml"
     prefix:   /
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
 
 acme_website:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
