@@ -4,28 +4,7 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <div class="table-container">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Author</th>
-                <th>Created</th>
-                <th>Website</th>
-                <th>Comment</th>
-                <th>Rating</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for comment in comments %}
-                <tr>
-                    <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
-                    <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
-                    <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
-                    <td>{{ comment.comment }}</td>
-                    <td>{{ comment.rating }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% include 'SymfotestTestBundle:Page:only_table.html.twig' %}
     </div>
     {%  if error is defined %}
         <h3>test{{ error }}</h3>

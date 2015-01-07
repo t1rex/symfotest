@@ -1,13 +1,14 @@
-$(document).ready(function(){
+var formHandler = function() {
     var timeLimit =60;
-    var $container = $('.table-container');
-    $('.comment-form input').removeAttr('value');
-    var status = '';
-    var $form = $('.comment-form'),
+    var $container = $('.table-container'),
+        message = '',
+        $form = $('.comment-form'),
         action = $form.attr('action'),
-        data = null;
+        data = null,
+        $submitForm = $('.submit-form');
+
     $form.submit(function(){
-        $('.submit-form').attr('disabled', true);
+        $submitForm.attr('disabled', true);
         data = $form.serialize();
         $.ajax({
             type: "POST",
@@ -15,49 +16,60 @@ $(document).ready(function(){
             dataType: 'json',
             data: data,
             success: function(response){
-                if (response["error"] != undefined ) {
-                    $container.append(response)
-                    status = response["error"];
-                } else{
+                //alert('success');
+               var noErrors = (response["errorMessage"] != undefined);
+               console.log(response);
+               if (noErrors) {
+                    message = response["errorMessage"];
+               } else{
                     $container.empty().append(response);
-                    status = 'Comment successfully added';
-                }
-
+                    message = 'Comment successfully added. You can add new comment through 60 s.';
+               }
+               showDialog(message);
+               if (!noErrors){
+                   showTime();
+               } else {
+                   $submitForm.attr('disabled', false);
+               }
             },
-            error: function(data) {
-                alert('Error:' + data + ' is not valid');
-                status = 'Error: comment can\'t be added';
-            },
-            complete: function(){
-                $( "#dialog").html('<p>' + status + '</p>' + '<br/> You can add comment through 60 s.').dialog({
-                    dialogClass: "no-close",
-                    buttons: [
-                        {
-                            text: "OK",
-                            click: function() {
-                                $( this ).dialog( "close" );
-                            }
-                        }
-                    ]
-                });
-                showTime();
+            error: function() {
+                //alert('error');
+                message = 'Error: comment can\'t be added';
+                showDialog(message);
+                $submitForm.attr('disabled', false);
             }
         });
         return false;
     });
 
     function showTime() {
-        var i = 1;
-        var timerId = setInterval(function() {
-            $('.submit-form').html('Wait ' + i + ' s.');
-            if (i == timeLimit) {
+        var i = timeLimit;
+        var timerId = setInterval(function () {
+            $submitForm.html('Wait ' + i + ' s.');
+            if (i == 1) {
                 clearInterval(timerId);
-                $('.submit-form').html('Submit').attr('disabled', false);
+                $submitForm.html('Submit').attr('disabled', false);
             }
-            i++;
+            i--;
         }, 1000);
     }
 
-
-
+    function showDialog(message)
+    {
+        $( "#dialog").html('<p>' + message + '</p>').dialog({
+            dialogClass: "no-close",
+            buttons: [
+                {
+                    text: "OK",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
+        });
+    }
+}
+$(document).ready(function(){
+    new formHandler();
 })
+

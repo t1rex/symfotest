@@ -11,12 +11,11 @@ use Symfotest\TestBundle\Entity\Comments;
 
 class PageController extends Controller
 {
+    protected $statusMessage = '';
     public function indexAction()
     {
         return $this->render('SymfotestTestBundle:Page:base.html.twig');
     }
-
-
 
     public function showAllAction(Request $request)
     {
@@ -33,11 +32,24 @@ class PageController extends Controller
 
             $timeCheck = $this->checkTime($session);
             if (!$timeCheck) {
-                $error = 'You have already created message! Try again later!';$comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
-                return new JsonResponse(array('error' => $error));
+                return new JsonResponse(array('errorMessage' => 'You have already created message! Try again later!'));
             }
 
-            if($form->isSubmitted()) {
+            $isValidate = true;
+            $author = $form["author"]->getData();
+            $comment = $form["comment"]->getData();
+            if (strlen($author) < 4){
+                $isValidate = false;
+                $this->statusMessage .= 'The name of the author should be longer than 4 characters. ';
+            }
+            if (strlen($comment) < 10){
+                $isValidate = false;
+                $this->statusMessage .= 'Comment should contain more than 10 characters. ';
+            }
+
+
+
+            if($isValidate) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newComment);
                 $em->flush();
@@ -46,7 +58,9 @@ class PageController extends Controller
                 $session->set('createComment', $timeNow);
 
                 $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
-                return new JsonResponse($this->renderView('SymfotestTestBundle:Page:table.html.twig', array('comments' => $comments)));
+                return new JsonResponse($this->renderView('SymfotestTestBundle:Page:only_table.html.twig', array('comments' => $comments)));
+            } else {
+                return new JsonResponse(array('errorMessage' => $this->statusMessage));
             }
         }
         $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
