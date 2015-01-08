@@ -101,7 +101,7 @@ class PageController extends Controller
         $session = $request->getSession();
         $newComment = new Comments();
         $newComment->setDate(new \DateTime("now"));
-        $newComment->setStatus(1);
+        $newComment->setStatus('invisible');
         $form = $this->formCreator($newComment);
 
         if ($request->isMethod('post')) {

@@ -16,9 +16,7 @@ var formHandler = function() {
             dataType: 'json',
             data: data,
             success: function(response){
-                //alert('success');
                var noErrors = (response["errorMessage"] != undefined);
-               console.log(response);
                if (noErrors) {
                     message = response["errorMessage"];
                } else{
@@ -33,7 +31,6 @@ var formHandler = function() {
                }
             },
             error: function() {
-                //alert('error');
                 message = 'Error: comment can\'t be added';
                 showDialog(message);
                 $submitForm.attr('disabled', false);

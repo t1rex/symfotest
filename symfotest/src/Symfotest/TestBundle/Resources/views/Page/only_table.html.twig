@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     {% for comment in comments %}
-        {% if comment.status == 1 %}
+        {% if comment.status == 'visible' %}
             <tr>
                 <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
                 <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>

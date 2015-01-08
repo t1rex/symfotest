@@ -34,8 +34,12 @@ class CommentsAdmin extends Admin
             ->add('date')
             ->add('comment')
             ->add('rating')
-            ->add('status')
-        ;
+            ->add('status', 'choice', array(
+                'choices' => array(
+                    'visible' => 'visible', 'invisible' => 'invisible'
+                ),
+                'required' => false))
+            ;
     }
 
     // Fields to be shown on filter forms
@@ -56,16 +60,12 @@ class CommentsAdmin extends Admin
             ->add('site')
             ->add('comment')
             ->add('rating')
-//            ->addIdentifier('status', null, array('route' => array('name' => 'edit')))
             ->add('status')
             ->add('_action', 'actions', array(
                 'actions' => array(
-//                    'confirm' => array('template' => 'SymfotestTestBundle:Page:confirm_button.html.twig'),
-//                    'reject' => array('template' => 'SymfotestTestBundle:Page:reject_button.html.twig'),
                     'delete' => array(),
-                    'edit' => array('status'),
-                ),
-                'edit' => 'inline'
+                    'edit' => array(),
+                )
             ))
         ;
     }

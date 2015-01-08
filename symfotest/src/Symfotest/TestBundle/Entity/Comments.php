@@ -42,7 +42,7 @@ class Comments
     private $rating;
 
     /**
-     * @var integer
+     * @var string
      */
     private $status;
 
