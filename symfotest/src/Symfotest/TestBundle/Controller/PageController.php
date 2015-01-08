@@ -17,52 +17,14 @@ class PageController extends Controller
         return $this->render('SymfotestTestBundle:Page:base.html.twig');
     }
 
-    public function showAllAction(Request $request)
+    public function showAllAction()
     {
-        $session = $request->getSession();
         $newComment = new Comments();
         $newComment->setDate(new \DateTime("now"));
         $newComment->setComment('testComment');
         $newComment->setStatus(5);
         $form = $this->formCreator($newComment);
 
-        if ($request->isMethod('post')) {
-            $form->handleRequest($request);
-            $newComment->prepareURL();
-
-            $timeCheck = $this->checkTime($session);
-            if (!$timeCheck) {
-                return new JsonResponse(array('errorMessage' => 'You have already created message! Try again later!'));
-            }
-
-            $isValidate = true;
-            $author = $form["author"]->getData();
-            $comment = $form["comment"]->getData();
-            if (strlen($author) < 4){
-                $isValidate = false;
-                $this->statusMessage .= 'The name of the author should be longer than 4 characters. ';
-            }
-            if (strlen($comment) < 10){
-                $isValidate = false;
-                $this->statusMessage .= 'Comment should contain more than 10 characters. ';
-            }
-
-
-
-            if($isValidate) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($newComment);
-                $em->flush();
-
-                $timeNow = new \DateTime('now');
-                $session->set('createComment', $timeNow);
-
-                $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
-                return new JsonResponse($this->renderView('SymfotestTestBundle:Page:only_table.html.twig', array('comments' => $comments)));
-            } else {
-                return new JsonResponse(array('errorMessage' => $this->statusMessage));
-            }
-        }
         $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
         if (!$comments) {
             throw $this->createNotFoundException('No comments found');
@@ -126,7 +88,7 @@ class PageController extends Controller
      * @param $session Session
      * @return bool
      */
-    function checkTime($session)
+    private function checkTime($session)
     {
 
         $timeOfCreated = $session->get('createComment');
@@ -135,5 +97,50 @@ class PageController extends Controller
             return $timeMinutesAgo > $timeOfCreated ? true : false;
         }
         return true;
+    }
+
+    public function jsonHandlerAction(Request $request)
+    {
+        $session = $request->getSession();
+        $newComment = new Comments();
+        $newComment->setDate(new \DateTime("now"));
+        $newComment->setStatus(1);
+        $form = $this->formCreator($newComment);
+
+        if ($request->isMethod('post')) {
+            $form->handleRequest($request);
+            $newComment->prepareURL();
+
+            $timeCheck = $this->checkTime($session);
+            if (!$timeCheck) {
+                return new JsonResponse(array('errorMessage' => 'You have already created message! Try again later!'));
+            }
+
+            $isValidate = true;
+            $author = $form["author"]->getData();
+            $comment = $form["comment"]->getData();
+            if (strlen($author) < 6){
+                $isValidate = false;
+                $this->statusMessage .= 'The name of the author should be longer than 6 characters. ';
+            }
+            if (strlen($comment) < 10){
+                $isValidate = false;
+                $this->statusMessage .= 'Comment should contain more than 10 characters. ';
+            }
+
+            if($isValidate) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($newComment);
+                $em->flush();
+
+                $timeNow = new \DateTime('now');
+                $session->set('createComment', $timeNow);
+
+                $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
+                return new JsonResponse($this->renderView('SymfotestTestBundle:Page:only_table.html.twig', array('comments' => $comments)));
+            } else {
+                return new JsonResponse(array('errorMessage' => $this->statusMessage));
+            }
+        }
     }
 }

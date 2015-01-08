@@ -34,6 +34,10 @@ create_post:
     path:      /create-post
     defaults:  {_controller: SymfotestTestBundle:Default:createPost}
 
+for_ajax:
+    path:      /json
+    defaults:  {_controller: SymfotestTestBundle:Page:jsonHandler}
+
 # ->2.1. STEP 1: DEFINE SONATAADMINBUNDLE ROUTES
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'

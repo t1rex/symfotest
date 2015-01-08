@@ -10,7 +10,7 @@
         <h3>test{{ error }}</h3>
     {% endif %}
     {% if form is defined %}
-        <form class="comment-form" action="{{ path('show_all') }}" method="post" {{ form_enctype(form) }}>
+        <form class="comment-form" action="{{ path('for_ajax') }}" method="post" {{ form_enctype(form) }}>
             <div class="form-group">
                 <label>Author Name</label>
                 {{ form_widget(form.author) }}
