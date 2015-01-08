@@ -10,13 +10,16 @@
     </thead>
     <tbody>
     {% for comment in comments %}
-        <tr>
-            <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
-            <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
-            <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
-            <td>{{ comment.comment }}</td>
-            <td>{{ comment.rating }}</td>
-        </tr>
+        {% if comment.status == 1 %}
+            <tr>
+                <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
+                <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
+                <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.rating }}</td>
+            </tr>
+        {% endif %}
     {% endfor %}
     </tbody>
 </table>
+

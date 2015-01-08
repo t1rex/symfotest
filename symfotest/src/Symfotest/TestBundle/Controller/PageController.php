@@ -20,9 +20,6 @@ class PageController extends Controller
     public function showAllAction()
     {
         $newComment = new Comments();
-        $newComment->setDate(new \DateTime("now"));
-        $newComment->setComment('testComment');
-        $newComment->setStatus(5);
         $form = $this->formCreator($newComment);
 
         $comments = $this->getDoctrine()->getRepository('SymfotestTestBundle:Comments')->findAll();
