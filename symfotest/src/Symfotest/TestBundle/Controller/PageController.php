@@ -49,7 +49,7 @@ class PageController extends Controller
                     10 => '10',
                     ),
                 'required'  => false,
-                'attr' => array('class' => 'form-control col-lg-2')
+                'attr' => array('class' => 'form-control')
             ))
             ->add('save', 'submit', array('label' => 'Create comment'))
             ->getForm();

@@ -40,14 +40,14 @@ $(document).ready(function(){
     });
 
     function showTime() {
-        var i = 1;
+        var i = timeLimit;
         var timerId = setInterval(function() {
             $('.submit-form').html('Wait ' + i + ' s.');
-            if (i == timeLimit) {
+            if (i == 1) {
                 clearInterval(timerId);
                 $('.submit-form').html('Submit').attr('disabled', false);
             }
-            i++;
+            i--;
         }, 1000);
     }
 
