@@ -102,6 +102,7 @@ class PageController extends Controller
         $newComment = new Comments();
         $newComment->setDate(new \DateTime("now"));
         $newComment->setStatus('invisible');
+        $newComment->setMail('t1rex@ukr.net');
         $form = $this->formCreator($newComment);
 
         if ($request->isMethod('post')) {

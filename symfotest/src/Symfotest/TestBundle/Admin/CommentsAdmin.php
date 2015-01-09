@@ -39,6 +39,16 @@ class CommentsAdmin extends Admin
                     'visible' => 'visible', 'invisible' => 'invisible'
                 ),
                 'required' => false))
+            ->add('mail_body', 'choice', array(
+                'choices' => array(
+                    '' => 'Do not send mail',
+                    'Your comment posted' => 'Your comment posted',
+                    'You denied posting comments: Your comment contain foul language' => 'You denied posting comments: Your comment contain foul language',
+                    'You denied posting comments: not valid comment' => 'You denied posting comments: not valid comment',
+                    'You denied posting comments: Your comment containing insults' => 'You denied posting comments: Your comment containing insults',
+                    'Your comment has been changed' => 'Your comment has been changed',
+                ),
+                'required' => false))
             ;
     }
 

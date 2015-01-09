@@ -31,6 +31,12 @@ Symfotest\TestBundle\Entity\Comments:
              type: string
              columnDefinition: ENUM('visible', 'invisible')
              default: 'invisible'
+        email:
+            type: string
+            length: '63'
+        mail_body:
+            type: string
+            length: '255'
 
 #        slug:
 #            type: string

@@ -21,19 +21,24 @@ class AdminApplicationListener
     {
         $ac = $event->getObject();
 
-        $message = \Swift_Message::newInstance()
-            ->setContentType('text/html')
-            ->setSubject('[VendorName] Object was edited')
-            ->setFrom('admin@VendorName.ru')
-            ->setTo($ac->getEmail())
-            ->setBody(
-                $this->__templating->render(
-                    'SymfotestTestBundle:Page:email.html.twig',
-                    array('name' => $ac->getAuthor())
+        $sendMail = ($ac->getMailBody() == '');
+        if(!$sendMail){
+            $message = \Swift_Message::newInstance()
+                ->setContentType('text/html')
+                ->setSubject('Your comment has been changed')
+                ->setFrom('admin@VendorName.ru')
+                ->setTo($ac->getEmail())
+                ->setBody(
+                    $this->__templating->render(
+                        'SymfotestTestBundle:Page:email.html.twig',
+                        array(
+                            'name' => $ac->getAuthor(),
+                            'body' => $ac->getMailBody()
+                            )
+                    )
                 )
-            )
-        ;
-        $this->__mailer->send($message);
-
+            ;
+            $this->__mailer->send($message);
+        }
     }
 }

@@ -21,6 +21,16 @@ class Comments
     private $author;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $mail_body;
+
+    /**
      * @var \DateTime
      *
      */
@@ -204,9 +214,50 @@ class Comments
         }
     }
 
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Comments
+     */
+    public function setMail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
     public function getEmail()
     {
         return 't1rex@ukr.net';
+    }
+
+    /**
+     * Set mail_body
+     *
+     * @param string $mail_body
+     * @return Comments
+     */
+    public function setMailBody($mail_body)
+    {
+        $this->email = $mail_body;
+
+        return $this;
+    }
+
+    /**
+     * Get mail_body
+     *
+     * @return string
+     */
+    public function getMailBody()
+    {
+        return $this->mail_body;
     }
 
 }
