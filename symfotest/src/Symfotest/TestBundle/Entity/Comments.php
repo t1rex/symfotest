@@ -204,4 +204,9 @@ class Comments
         }
     }
 
+    public function getEmail()
+    {
+        return 't1rex@ukr.net';
+    }
+
 }

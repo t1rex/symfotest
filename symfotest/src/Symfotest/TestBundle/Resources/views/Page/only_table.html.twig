@@ -17,6 +17,7 @@
                 <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
                 <td>{{ comment.comment }}</td>
                 <td>{{ comment.rating }}</td>
+                {#<td>{{ socialButtons( { 'facebook':false, 'twitter':false, 'linkedin':false, 'googleplus': {'locale':'en', 'send':true, 'url':  comment.site }} ) }}</td>#}
             </tr>
         {% endif %}
     {% endfor %}

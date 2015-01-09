@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Symfotest\TestBundle\SymfotestTestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
