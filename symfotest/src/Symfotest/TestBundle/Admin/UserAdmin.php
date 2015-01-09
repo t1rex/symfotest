@@ -38,7 +38,6 @@ class UserAdmin extends Admin
             ->add('id')
             ->add('username')
             ->add('email')
-            ->add('last-login')
             ->add('enabled')
             ->add('roles')
         ;
