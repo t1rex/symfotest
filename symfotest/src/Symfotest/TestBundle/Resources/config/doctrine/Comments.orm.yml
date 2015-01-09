@@ -34,7 +34,7 @@ Symfotest\TestBundle\Entity\Comments:
         email:
             type: string
             length: '63'
-        mail_body:
+        body:
             type: string
             length: '255'
 

@@ -21,6 +21,16 @@ class Comments
     private $author;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $mail_body;
+
+    /**
      * @var \DateTime
      *
      */
@@ -46,15 +56,6 @@ class Comments
      */
     private $status;
 
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $body;
 
     /**
      * Get id
@@ -228,26 +229,26 @@ class Comments
     }
 
     /**
-     * Set body
+     * Set mail_body
      *
-     * @param string $body
+     * @param string $mail_body
      * @return Comments
      */
-    public function setBody($body)
+    public function setMailBody($mail_body)
     {
-        $this->body = $body;
+        $this->mail_body = $mail_body;
 
         return $this;
     }
 
     /**
-     * Get body
+     * Get mail_body
      *
      * @return string
      */
-    public function getBody()
+    public function getMailBody()
     {
-        return $this->body;
+        return $this->mail_body;
     }
 
     /**

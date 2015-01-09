@@ -21,7 +21,7 @@ class AdminApplicationListener
     {
         $ac = $event->getObject();
 
-        $sendMail = ($ac->getMailBody() == '');
+        $sendMail = ($ac->getBody() == '');
         if(!$sendMail){
             $message = \Swift_Message::newInstance()
                 ->setContentType('text/html')
@@ -33,7 +33,7 @@ class AdminApplicationListener
                         'SymfotestTestBundle:Page:email.html.twig',
                         array(
                             'name' => $ac->getAuthor(),
-                            'body' => $ac->getMailBody()
+                            'body' => $ac->getBody()
                             )
                     )
                 )

@@ -21,7 +21,7 @@ var formHandler = function() {
                     message = response["errorMessage"];
                } else{
                     $container.empty().append(response);
-                    message = 'Comment successfully added. You can add new comment through 60 s.';
+                    message = 'Comment successfully sent. A confirmation message will be sent to your Email. You can add new comment through 60 s.';
                }
                showDialog(message);
                if (!noErrors){
@@ -66,7 +66,7 @@ var formHandler = function() {
         });
     }
 }
-$(document).ready(function(){
-    new formHandler();
-})
+//$(document).ready(function(){
+//    new formHandler();
+//})
 

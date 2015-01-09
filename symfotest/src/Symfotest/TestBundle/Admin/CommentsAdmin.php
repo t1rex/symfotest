@@ -39,7 +39,7 @@ class CommentsAdmin extends Admin
                     'visible' => 'visible', 'invisible' => 'invisible'
                 ),
                 'required' => false))
-            ->add('mail_body', 'choice', array(
+            ->add('body', 'choice', array(
                 'choices' => array(
                     '' => 'Do not send mail',
                     'Your comment posted' => 'Your comment posted',
