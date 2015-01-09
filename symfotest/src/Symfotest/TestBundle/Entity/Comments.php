@@ -204,15 +204,6 @@ class Comments
     {
         return $this->status;
     }
-    /**
-    *
-    */
-    public function prepareURL()
-    {
-        if($this->getSite()) {
-            $this->site = parse_url($this->getSite(), PHP_URL_HOST);
-        }
-    }
 
     /**
      * Set email
@@ -220,7 +211,7 @@ class Comments
      * @param string $email
      * @return Comments
      */
-    public function setMail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
 
@@ -234,7 +225,7 @@ class Comments
      */
     public function getEmail()
     {
-        return 't1rex@ukr.net';
+        return $this->email;
     }
 
     /**
@@ -245,7 +236,7 @@ class Comments
      */
     public function setMailBody($mail_body)
     {
-        $this->email = $mail_body;
+        $this->mail_body = $mail_body;
 
         return $this;
     }
@@ -258,6 +249,16 @@ class Comments
     public function getMailBody()
     {
         return $this->mail_body;
+    }
+
+    /**
+     *
+     */
+    public function prepareURL()
+    {
+        if($this->getSite()) {
+            $this->site = parse_url($this->getSite(), PHP_URL_HOST);
+        }
     }
 
 }
