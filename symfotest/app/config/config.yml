@@ -54,6 +54,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        mapping_types:
+                  enum: string
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
@@ -67,11 +69,9 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport: gmail
+    username:  SymfotestTestBundle
+    password:  SymfotestTestBundle15
 
 stof_doctrine_extensions:
     default_locale: en_US
@@ -105,14 +105,14 @@ nomaya_social:
     buttons:
         facebook:
             url:            null
-            locale:         "fr_FR"
+            locale:         "en"
             send:           false
             width:          300
             showFaces:      false
             layout:         "button_count"
         twitter:
             url:            null
-            locale:         "fr"
+            locale:         "en"
             message:        "Je veux partager ça avec vous"
             text:           "Tweet"
             via:            "L'Equipe cartedevisitevirtuelle.fr"

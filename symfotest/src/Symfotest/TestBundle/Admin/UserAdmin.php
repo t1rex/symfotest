@@ -1,5 +1,4 @@
 <?php
-// src/Acme/DemoBundle/Admin/PostAdmin.php
 
 namespace Symfotest\TestBundle\Admin;
 

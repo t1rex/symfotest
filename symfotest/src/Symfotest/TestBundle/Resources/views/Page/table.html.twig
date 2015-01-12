@@ -4,32 +4,13 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <div class="table-container">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Author</th>
-                <th>Created</th>
-                <th>Website</th>
-                <th>Comment</th>
-                <th>Rating</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for comment in comments %}
-                <tr>
-                    <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
-                    <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
-                    <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
-                    <td>{{ comment.comment }}</td>
-                    <td>{{ comment.rating }}</td>
-                    <td>{{ twitterButton( {'url':comment.site} ) }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% include 'SymfotestTestBundle:Page:only_table.html.twig' %}
     </div>
+    {%  if error is defined %}
+        <h3>test{{ error }}</h3>
+    {% endif %}
     {% if form is defined %}
-        <form class="comment-form" action="{{ path('show_all') }}" method="post" {{ form_enctype(form) }}>
+        <form class="comment-form" action="{{ path('for_ajax') }}" method="post" {{ form_enctype(form) }}>
             <div class="form-group">
                 <label>Author Name</label>
                 {{ form_widget(form.author) }}
@@ -48,6 +29,11 @@
             </div>
             <button type="submit" class="btn btn-default submit-form">Submit</button>
         </form>
+        <script>
+            $(document).ready(function(){
+                new formHandler();
+            })
+        </script>
 
         <div id="dialog" title="Basic dialog">
         </div>

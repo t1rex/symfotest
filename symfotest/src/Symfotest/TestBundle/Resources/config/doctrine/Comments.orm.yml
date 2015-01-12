@@ -28,7 +28,16 @@ Symfotest\TestBundle\Entity\Comments:
             type: integer
             length: '2'
         status:
-            type: smallint
+             type: string
+             columnDefinition: ENUM('visible', 'invisible')
+             default: 'invisible'
+        email:
+            type: string
+            length: '63'
+        body:
+            type: string
+            length: '255'
+
 #        slug:
 #            type: string
 #                length: '255'
@@ -36,3 +45,4 @@ Symfotest\TestBundle\Entity\Comments:
 #                    slug:
 #                        fields: author
     lifecycleCallbacks: {  }
+

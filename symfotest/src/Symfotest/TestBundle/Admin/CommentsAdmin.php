@@ -1,5 +1,4 @@
 <?php
-// src/Acme/DemoBundle/Admin/PostAdmin.php
 
 namespace Symfotest\TestBundle\Admin;
 
@@ -18,8 +17,22 @@ class CommentsAdmin extends Admin
             ->add('site')
             ->add('comment')
             ->add('rating')
-
-        ;
+            ->add('status', 'choice', array(
+                'choices' => array(
+                    'visible' => 'visible', 'invisible' => 'invisible'
+                ),
+                'required' => false))
+            ->add('body', 'choice', array(
+                'choices' => array(
+                    '' => 'Do not send mail',
+                    'Your comment posted' => 'Your comment posted',
+                    'You denied posting comments: Your comment contain foul language' => 'You denied posting comments: Your comment contain foul language',
+                    'You denied posting comments: not valid comment' => 'You denied posting comments: not valid comment',
+                    'You denied posting comments: Your comment containing insults' => 'You denied posting comments: Your comment containing insults',
+                    'Your comment has been changed' => 'Your comment has been changed',
+                ),
+                'required' => false))
+            ;
     }
 
     // Fields to be shown on filter forms
@@ -40,7 +53,13 @@ class CommentsAdmin extends Admin
             ->add('site')
             ->add('comment')
             ->add('rating')
-
+            ->add('status')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'delete' => array(),
+                    'edit' => array(),
+                )
+            ))
         ;
     }
 

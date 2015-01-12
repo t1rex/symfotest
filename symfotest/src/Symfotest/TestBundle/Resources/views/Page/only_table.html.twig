@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Author</th>
+        <th>Created</th>
+        <th>Website</th>
+        <th>Comment</th>
+        <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+        {% if comment.status == 'visible' %}
+            <tr>
+                <td><a href="{{ path('show_author', {'author': comment.author}) }}">{{ comment.author }}</a> </td>
+                <td>{% if comment.date %}{{ comment.date|date('Y-m-d') }}{% endif %}</td>
+                <td><a href="{{ path('show_site', {'site': comment.site}) }}">{{ comment.site }}</a></td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.rating }}</td>
+                {#<td>{{ socialButtons( { 'facebook':false, 'twitter':false, 'linkedin':false, 'googleplus': {'locale':'en', 'send':true, 'url':  comment.site }} ) }}</td>#}
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+

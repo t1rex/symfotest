@@ -1,4 +1,8 @@
 services:
-#    symfotest_test.example:
-#        class: Symfotest\TestBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    Symfotest.admin.on_application:
+        class: Symfotest\TestBundle\EventListener\AdminApplicationListener
+        arguments:
+            mailer: @mailer
+            templating: @templating
+        tags:
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_update, method: onApplication }

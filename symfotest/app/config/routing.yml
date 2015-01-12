@@ -1,14 +1,6 @@
-symfotest_user:
-    resource: "@SymfotestUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 symfotest_test:
     resource: "@SymfotestTestBundle/Resources/config/routing.yml"
     prefix:   /
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
 
 acme_website:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
@@ -42,6 +34,10 @@ create_post:
     path:      /create-post
     defaults:  {_controller: SymfotestTestBundle:Default:createPost}
 
+for_ajax:
+    path:      /json
+    defaults:  {_controller: SymfotestTestBundle:Page:jsonHandler}
+
 # ->2.1. STEP 1: DEFINE SONATAADMINBUNDLE ROUTES
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
@@ -74,3 +70,11 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+login:
+    pattern:   /login
+    defaults:  { _controller: SymfotestTestBundle:Security:login }
+login_check:
+    pattern:   /login_check
+
+#change_status:
