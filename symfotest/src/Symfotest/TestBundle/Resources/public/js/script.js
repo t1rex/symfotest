@@ -1,6 +1,6 @@
 var formHandler = function() {
-    var timeLimit =60;
-    var $container = $('.table-container'),
+    var timeLimit =60,
+        $container = $('.table-container'),
         message = '',
         $form = $('.comment-form'),
         action = $form.attr('action'),
